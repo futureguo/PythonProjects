@@ -7,14 +7,14 @@ def shuffle(a, b):
     作业2 同步打乱两个列表
     :return: None，直接在原列表上操作
     '''
-    c=list(zip(a,b))
+    c = list(zip(a, b))
     np.random.shuffle(c)
-    a[:],b[:]=zip(*c)
+    a[:], b[:] = zip(*c)
 
 
-a = [1,2,3,4,5,6,7,8]
-b = ["差评","差评","差评","差评","好评","好评","好评","好评"]
-shuffle(a,b)
+a = [1, 2, 3, 4, 5, 6, 7, 8]
+b = ["差评", "差评", "差评", "差评", "好评", "好评", "好评", "好评"]
+shuffle(a, b)
 for i in range(len(a)):
     print(f'{a[i]}:{b[i]}')
 
