@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 
@@ -49,10 +50,9 @@ columns = []
 datalist = []
 with open(file, "r") as f:
     lines = f.readlines()
-columns = lines[0][:-1].split(',')
-print(columns)
+columns = lines[0].strip().split(',')
 for line in lines[1:]:
-    datalist.append(line[line.index(',') + 1:-1].split(","))
+    datalist.append(line.strip().split(","))
 
 # csv读取
 # columns = df.columns.tolist()
@@ -62,10 +62,12 @@ for line in lines[1:]:
 
 # vertify
 print(columns == ['编号', '色泽', '根蒂', '敲声', '纹理', '脐部', '触感', '密度', '含糖率', '好瓜'])
-print(datalist[-1] == ['青绿', '硬挺', '浊响', '稍糊', '平坦', '硬滑', '0.666', '0.111', '好'])
+print(datalist[-1] == ['18', '青绿', '硬挺', '浊响', '稍糊', '平坦', '硬滑', '0.666', '0.111', '好'])
 
 # your code here
-data_white = [data for data in datalist if (data[0] == '浅白')]
-data_beyond_zero_point_five = [data for data in datalist if (float(data[6]) > 0.5)]
+data_white = [data for data in datalist if (data[1] == '浅白')]
+data_beyond_zero_point_five = [data for data in datalist if (float(data[7]) > 0.5)]
+print("浅白")
 print(data_white, "  ", len(data_white))
+print(">0.5")
 print(data_beyond_zero_point_five, "  ", len(data_beyond_zero_point_five))
